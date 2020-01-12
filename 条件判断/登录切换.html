@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>登录切换</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <span>
+        <label for="content">{{msg1}}</label>
+        <input type="text" id="content" />
+      </span>
+      <button @click="changeLoginType">{{msg2}}</button>
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const accountLogin = 1;
+      const emailLogin = 2;
+      const a = "邮箱登录";
+      const b = "账号登录";
+
+      const app = new Vue({
+        el: "#app",
+        data: {
+          loginType: 1,
+          msg1: b,
+          msg2: a
+        },
+        methods: {
+          changeLoginType() {
+            var temp = { name: "zhangsan", mobile: "15200987678" };
+            if (this.loginType === accountLogin) {
+              this.loginType = emailLogin;
+              this.msg1 = a;
+              this.msg2 = b;
+            } else {
+              this.loginType = accountLogin;
+              this.msg1 = b;
+              this.msg2 = a;
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

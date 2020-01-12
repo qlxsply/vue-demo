@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>循环遍历</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 遍历数组时，第一个参数是value，第二个参数index -->
+        <li v-for="(a, i) in array">
+          {{i+1 }} | {{a.name}} | {{a.age}}
+        </li>
+      </ul>
+
+      <ul>
+        <!-- 遍历对象时，如果只是获取一个值，获取的是value值 -->
+        <li v-for="a in info">
+          {{a}}
+        </li>
+        <br />
+        <!-- 第一个参数是value，第二个参数是key，第三个参数是index -->
+        <li v-for="(a,t,i) in info">
+          {{i+1}} : {{t}} : {{a}}
+        </li>
+      </ul>
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          array: [
+            { name: "zhangsan", age: 23 },
+            { name: "lisi", age: 11 }
+          ],
+          info: {
+            name: "zhaoliu",
+            age: "25",
+            sex: "female"
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>登录切换</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- v-if 和 v-show 的区别：
+        v-if当条件为false时，其所在元素在DOM中直接不存在
+        v-show当条件为false时，其所在元素只是增加了一个行内样式，display: none
+      -->
+      <h2 v-if="show" id="a">{{msg}}</h2>
+      <h2 v-show="show" id="b">{{msg}}</h2>
+      <button @click="show = !show">按钮</button>
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          show: true,
+          msg: "hello fa"
+        }
+      });
+    </script>
+  </body>
+</html>

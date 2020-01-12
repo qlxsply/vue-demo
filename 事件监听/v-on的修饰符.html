@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>this is title</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div @click="divClick">
+        <!--stop修饰符，停止冒泡，只触发当前dom的事件，不会触发上一层divClick事件-->
+        <button @click.stop="buttonClick">按钮</button>
+      </div>
+
+      <br />
+      <!--prevent修饰符，禁止默认事件-->
+      <form action="表单action">
+        <input type="submit" value="提交" @click.prevent="submitClick" />
+      </form>
+
+      <br />
+      <!--监听键盘点击 keyup表示当某个按键按下并离开后的事件 enter表示只监听enter键的点击事件-->
+      <input type="text" @keyup.enter="keyUpClick" />
+
+      <br />
+      <button @click.once="buttonClick2">按钮2</button>
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "测试message"
+        },
+        methods: {
+          buttonClick() {
+            console.log("button");
+          },
+          divClick() {
+            console.log("div");
+          },
+          submitClick() {
+            console.log("submit");
+          },
+          keyUpClick() {
+            console.log("keyUp");
+          },
+          buttonClick2() {
+            console.log("button2");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

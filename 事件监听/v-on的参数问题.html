@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>this is title</title>
+  </head>
+
+  <body>
+    <div id="app"> 
+      <h2>{{counter}}</h2>
+      <!--如果事件方法本身不需要参数，那么有无小括号都可以-->
+      <button @click="click_1">click_1</button>
+      <button @click="click_2()">click_2</button>
+
+      <!--在事件定义时，绑定方法可以省略小括号，但是方法本身是需要一个参数的，这个时候，
+        Vue会默认将浏览器生产的event事件对象作为参数传入方法-->
+      <button @click="click_3">click_3</button>
+
+      <!--在方法定义时，除了event参数还需要别的参数-->
+      <!--手动获取event对象：$event-->
+      <button @click="click_4($event,123)">click_4</button>
+
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          counter: 0
+        },
+        methods: {
+          click_1() {
+            console.log("aaaa");
+          },
+          click_2() {
+            console.log("aaaa");
+          },
+          click_3(event) {
+            console.log(event);
+          },
+          click_4(event,a) {
+            console.log(event);
+            console.log(a);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>this is title</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div v-if="isShow2">
+        <!-- v-if 和v-else会自动匹配相同层级的判断 -->
+        <h2 v-if="isShow">{{message}}</h2>
+        <h2 v-else>false</h2>
+      </div>
+      <div v-else>alilili</div>
+
+      <h1>{{temp}}</h1>
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "测试message",
+          isShow: true,
+          isShow2: true,
+          a: 61
+        },
+        methods: {},
+        computed: {
+          temp() {
+            let msg = "不及格";
+            if (this.a >= 60 && this.a < 80) {
+              msg = "及格";
+            } else if (this.a >= 80) {
+              msg = "牛逼";
+            }
+            return msg;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

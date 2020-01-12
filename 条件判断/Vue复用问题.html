@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>登录切换</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!--存在的问题： 如果在input内输入内容，此时进行切换，但是input内容却不会清空-->
+      <!--原因：vue在进行渲染之前，创建了一个虚拟DOM，该虚拟dom的复用导致了如上问题-->
+      <!--可以对相同元素添加不同的key属性来实现内容的清空-->
+      <span v-if="isUser">
+        <label for="userName">用户账号</label>
+        <input type="text" id="userName" placeholder="用户账号" key="a" />
+      </span>
+
+      <span v-else>
+        <label for="email">用户邮箱</label>
+        <input type="text" id="email" placeholder="用户邮箱" key="b" />
+      </span>
+
+      <button @click="isUser = !isUser">切换</button>
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          isUser: true
+        }
+      });
+    </script>
+  </body>
+</html>
