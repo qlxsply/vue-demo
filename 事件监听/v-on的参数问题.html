@@ -6,10 +6,11 @@
   </head>
 
   <body>
-    <div id="app"> 
+    <div id="app">
       <h2>{{counter}}</h2>
       <!--如果事件方法本身不需要参数，那么有无小括号都可以-->
-      <button @click="click_1">click_1</button>
+      <button v-on:click="click_1">click_1</button>
+      <h2>{{click_1_value}}</h2>
       <button @click="click_2()">click_2</button>
 
       <!--在事件定义时，绑定方法可以省略小括号，但是方法本身是需要一个参数的，这个时候，
@@ -19,18 +20,19 @@
       <!--在方法定义时，除了event参数还需要别的参数-->
       <!--手动获取event对象：$event-->
       <button @click="click_4($event,123)">click_4</button>
-
     </div>
-
     <script src="./../js/vue.js"></script>
     <script>
       const app = new Vue({
         el: "#app",
         data: {
-          counter: 0
+          counter: 0,
+          click_1_value: 0,
+          url: "www.baidu.com"
         },
         methods: {
           click_1() {
+            this.click_1_value++;
             console.log("aaaa");
           },
           click_2() {
@@ -39,7 +41,7 @@
           click_3(event) {
             console.log(event);
           },
-          click_4(event,a) {
+          click_4(event, a) {
             console.log(event);
             console.log(a);
           }

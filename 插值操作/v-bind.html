@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>this is title</title>
+  </head>
+
+  <style type="text/css">
+    .active {
+      color: rgb(42, 238, 24);
+    }
+    .line {
+      font-size: 50px;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <h1>{{url}}</h1>
+      <a v-bind:href="url | urlFilter">百度一下</a>
+      <!--语法糖写法-->
+      <br />
+      <a :href="url | urlFilter">百度一下</a>
+      <br />
+      <h2 v-bind:class="{active: class1, line: class2}">{{msg}}</h2>
+      <button @click="btnClick">button</button>
+      <button @click="btnClick2">button2</button>
+    </div>
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          msg: "hello world",
+          url: "www.baidu.com",
+          class1: false,
+          class2: false
+        },
+        methods: {
+          btnClick() {
+            console.log("do button click");
+            this.class1 = !this.class1;
+          },
+          btnClick2() {
+            console.log("do button2 click");
+            this.class2 = !this.class2;
+          }
+        },
+        filters: {
+          urlFilter(a) {
+            return "https://" + a;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

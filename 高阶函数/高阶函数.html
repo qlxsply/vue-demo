@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>高阶函数</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>{{totalPrice}}</h1>
+    </div>
+
+    <script src="./../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          userList: [
+            {
+              name: "lihua",
+              age: 10
+            },
+            {
+              name: "zhangsan",
+              age: 20
+            },
+            {
+              name: "zhaoliu",
+              age: 30
+            }
+          ]
+        },
+        methods: {
+          print(array) {
+            for (let a of array) {
+              console.log(a.name + " " + a.age);
+            }
+            console.log("--------------------------");
+          }
+        },
+        computed: {
+          totalPrice() {
+            //filter 回调函数必须返回boolean值
+            let newArray = this.userList
+              .filter(a => a.age > 16)
+              .map(a => {
+                a.age = a.age + 3;
+                return a;
+              })
+              .reduce((preValue, n) => {
+                n.age = n.age + preValue.age;
+                return n;
+              });
+            console.log(newArray.name + " " + newArray.age);
+
+            // this.print(newArray);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
